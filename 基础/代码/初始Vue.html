@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入vue -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <!-- 标签体内用插值语法 标签属性用指令语法 -->
+        <!-- 插值语法{{}} 括号内写入data中的数据名 -->
+        <h1>你好,{{name}}</h1>
+        <!-- 想让event出现要在参数中写入$event -->
+        <button v-on:click="showInfo">点我提示信息</button>
+       
+        <a href="http://baidu.com" @click.prevent="showInfo">点我提示信息</a>
+        
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false;//阻止vue在启动时生成生产
+        //创建Vue实例
+        const vm=new Vue({
+            //挂载，el用于指定vue为那个容器服务
+            el:'#root',
+            methods: {
+                showInfo(){
+                    alert("123")
+                }
+            },
+        })
+    </script>
+</body>
+</html>

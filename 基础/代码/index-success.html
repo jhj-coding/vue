@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            border: 2px;
+            border: none;
+        }
+    </style>
+</head>
+<body background="./1.jpg">
+    <div>
+        我
+        <i>我</i>
+        <em>我</em>
+    </div>
+    <script>
+        function Foo(){
+            var i=0;
+            return function(){
+                console.log(i++);
+            }
+        };
+        var f1=Foo(),f2=Foo();
+        f1();
+        f1();
+        f2();
+        console.log();
+    </script>
+</body>
+</html>

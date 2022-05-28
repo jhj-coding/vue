@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <ul>
+            <input type="text" v-model="word">
+            <!-- key是数据唯一标识 如果不存在逆序增加 逆序删除可不用-->
+            <li v-for="(p,index) in persons" :key="p.id">
+                {{p.name}}
+            </li>
+            <!-- <li v-for="(p,index) of person" :key="index">
+                {{p.name}}
+            </li> -->
+        </ul>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false;//阻止vue在启动时生成生产
+        //创建Vue实例
+        const vm=new Vue({
+            //挂载，el用于指定vue为那个容器服务
+            el:'#root',
+            data:{
+                word:"",
+                person:[
+                    {
+                        id:'001',name:'张三','age':18
+                    },
+                    {
+                        id:'002',name:'李四','age':19
+                    },
+                    {
+                        id:'003',name:'王五','age':20
+                    },
+                ],
+            },
+            computed:{
+                persons(){
+                    return this.person.filter((p)=>{
+                         return p.name.indexOf(this.word) !=+ -1;
+                       })
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        Vue.config.productionTip = false;//阻止vue在启动时生成生产
+        //创建Vue实例
+        const vm=new Vue({
+            //挂载，el用于指定vue为那个容器服务
+            el:'#root',
+            data:{
+                firstName:'张',
+                lastName:'三'
+            },
+            computed:{
+                fullName:{
+                    //当初次读取 或者所依赖的数据变化时
+                    get(){
+                        return this.firstName+this.lastName;
+                    }
+                }
+            },
+            methods: {
+                
+            },
+            watch:{
+                //原始的写法是'firstName'
+                firstName:{
+                    //初始化时让handler调用一下
+                    immediate:true,
+                    //深度监视 监视多级结构中的属性变化 例如person.age
+                    deep:true,
+                    //当firstName 修改时被调用 可以传入参数 newValue oldValue
+                    //可以监视data 和计算属性 computer
+                    handler(){
+
+                    }
+                },
+                //简写 只有handler时
+                firstName(){
+
+                }
+            }
+        })
+
+        //监视第二种写法
+        vm.$watch('firstName',{
+                    //初始化时让handler调用一下
+                    immediate:true,
+                    //当firstName 修改时被调用 可以传入参数 newValue oldValue
+                    //可以监视data 和计算属性 computer
+                    handler(){
+
+                    }
+                })
+    </script>
+</body>
+</html>
